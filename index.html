@@ -5,6 +5,7 @@
     <title>Document</title>
     <!-- Bootstrap CSS wird eingebunden, um die vorgefertigten Stile und Layouts zu nutzen -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="script.js" defer></script> <!-- Externe JavaScript-Datei -->
 </head>
 <body>
     
@@ -12,44 +13,58 @@
     <!-- Container für den Header-Bereich mit dunklem Hintergrund und weißem Text -->
     <div class="container-fluid bg-dark text-white text-center py-3">
         <!-- Flexbox wird verwendet, um den Text links auszurichten -->
-        <div class="d-flex justify-content-start">
+        <div class="d-flex justify-content-between align-items-center">
             <p class="mb-0 p">Mama Africa</p>
+            <!-- EXTRA Dropdown-Menü für die Sprachauswahl -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Language
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                    <!-- Sprachoption Deutsch mit Deutschland-Flagge -->
+                    <li>
+                        <a class="dropdown-item" href="#" onclick="changeLanguage('de')">
+                            <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="me-2" style="width: 20px; height: 15px;"> Deutsch
+                        </a>
+                    </li>
+                    <!-- Sprachoption Englisch mit England-Flagge -->
+                    <li>
+                        <a class="dropdown-item" href="#" onclick="changeLanguage('en')">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="Englisch" class="me-2" style="width: 20px; height: 15px;"> Englisch
+                        </a>
+                    </li>
+                    <!-- Sprachoption Spanisch mit Spanien-Flagge -->
+                    <li>
+                        <a class="dropdown-item" href="#" onclick="changeLanguage('es')">
+                            <img src="https://flagcdn.com/w40/es.png" alt="Spanisch" class="me-2" style="width: 20px; height: 15px;"> Spanisch
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+
     <!-- Zweiter Header-Bereich mit gelbem Hintergrund und zentriertem Text -->
     <div class="container-fluid bg-warning text-white text-center py-4">
         <!-- Flexbox und zentrierte Ausrichtung für den Text -->
         <div class="d-flex flex-column align-items-center">
-            <h1 class="mb-1">Willkommen bei Mama Africa</h1>
-            <p class="px-3"> Authentische afrikanische und österreichische Küche</p>
+            <h1 class="mb-1" id="welcomeMessage">Willkommen bei Mama Africa</h1>
+            <p class="px-3" id="description">Authentische afrikanische und österreichische Küche</p>
         </div>
     </div>
 </header>
 
 <main>
     <div class="container mt-4">
-        <!-- "container" sorgt für einen zentrierten und responsiven Bereich mit Abständen -->
-        <!-- "mt-4" fügt einen oberen Rand (Margin Top) hinzu -->
-        <h2 class="text-start mb-4">Tagesmenü</h2>
-        <!-- "text-start" richtet den Text links aus -->
-        <!-- "mb-4" fügt einen unteren Rand (Margin Bottom) hinzu -->
+        <h2 class="text-start mb-4" id="menuTitle">Tagesmenü</h2>
         <div class="row">
-            <!-- "row" erstellt eine horizontale Reihe für das Grid-System -->
-
             <!-- Gericht 1 -->
             <div class="col-md-4 mb-4">
-                <!-- "col-md-4" teilt die Reihe in 3 gleich große Spalten auf (bei mittleren Bildschirmen und größer) -->
-                <!-- "mb-4" fügt einen unteren Rand hinzu -->
                 <div class="card">
-                    <!-- "card" ist eine Bootstrap-Komponente für strukturierte Inhalte wie Bilder und Text -->
                     <img src="./img/Egusi Soup.png" class="card-img-top" alt="Gericht 1">
-                    <!-- "card-img-top" sorgt dafür, dass das Bild oben in der Karte angezeigt wird -->
                     <div class="card-body">
-                        <!-- "card-body" ist der Bereich für den Inhalt der Karte -->
-                        <h5 class="card-title">Egusi-Suppe</h5>
-                        <!-- "card-title" formatiert den Titel der Karte -->
-                        <p class="card-text">Würzige Suppe mit Spinat Fleisch und Melonenkernen.</p>
-                        <!-- "card-text" formatiert den Text der Karte -->
+                        <h5 class="card-title" id="dish1Title">Egusi-Suppe</h5>
+                        <p class="card-text" id="dish1Description">Würzige Suppe mit Spinat Fleisch und Melonenkernen.</p>
                         <p class="card-text">€12.90</p>
                     </div>
                 </div>
@@ -60,8 +75,8 @@
                 <div class="card">
                     <img src="./img/Schnitzel.jpg" class="card-img-top" alt="Gericht 2">
                     <div class="card-body">
-                        <h5 class="card-title">Wiener Schnitzel</h5>
-                        <p class="card-text">Klassisches Kalbschnitzel mit Petersilienkartoffel und Zitronenscheibe.</p>
+                        <h5 class="card-title" id="dish2Title">Wiener Schnitzel</h5>
+                        <p class="card-text" id="dish2Description">Klassisches Kalbschnitzel mit Petersilienkartoffel und Zitronenscheibe.</p>
                         <p class="card-text">€14.50</p>
                     </div>
                 </div>
@@ -72,36 +87,12 @@
                 <div class="card">
                     <img src="./img/Jollof Rice.jpg" class="card-img-top" alt="Gericht 3">
                     <div class="card-body">
-                        <h5 class="card-title">Jollof Reis</h5>
-                        <p class="card-text">Westafrikanischer Reis mit Tomaten, Paprika und Hühnchen.</p>
+                        <h5 class="card-title" id="dish3Title">Jollof Reis</h5>
+                        <p class="card-text" id="dish3Description">Westafrikanischer Reis mit Tomaten, Paprika und Hühnchen.</p>
                         <p class="card-text">€11.90</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <h2 class="text-start mt-5 mb-4">Reservierung</h2>
-        <!-- "mt-5" fügt einen größeren oberen Rand hinzu -->
-        <div class="container">
-            <!-- "container" sorgt für einen zentrierten und responsiven Bereich -->
-            <form>
-                <div class="mb-3">
-                    <!-- "mb-3" fügt einen unteren Rand hinzu -->
-                    <label for="name" class="form-label">Name</label>
-                    <!-- "form-label" formatiert das Label für das Eingabefeld -->
-                    <input type="text" class="form-control" id="name" required>
-                    <!-- "form-control" sorgt für ein responsives und stilisiertes Eingabefeld -->
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-Mail</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="date" class="form-label">Datum</label>
-                    <input type="date" class="form-control" id="date" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Reservieren</button>
-                <!-- "btn" und "btn-primary" erstellen einen stilisierten blauen Button -->
-            </form>
         </div>
     </div>
 </main>
@@ -115,5 +106,6 @@
 
 <!-- Bootstrap JavaScript wird eingebunden, um interaktive Komponenten zu aktivieren -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js" defer></script> <!-- Externe JavaScript-Datei -->
 </body>
 </html>
